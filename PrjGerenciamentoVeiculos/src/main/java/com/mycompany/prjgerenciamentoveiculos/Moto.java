@@ -5,6 +5,11 @@ package com.mycompany.prjgerenciamentoveiculos;
 public class Moto extends Veiculo implements IPassageiro {
     
     protected boolean sideCar;
+
+    public Moto(String placa, String marca, String modelo, double valorDiaria, boolean sidecar) {
+        super(placa, marca, modelo, valorDiaria);
+        this.sideCar = sidecar;
+    }
     
     @Override
     public double calcularAluguel(int dias) {

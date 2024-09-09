@@ -7,18 +7,25 @@ public class Caminhao extends Veiculo implements IPesado {
     protected double pesoCarga;
     protected int eixos;
 
+    public Caminhao(String placa, String marca, String modelo, double valorDiaria, double pesoCarga, int eixos) {
+        super(placa, marca, modelo, valorDiaria);
+        this.pesoCarga = pesoCarga;
+        this.eixos = eixos;
+    }
+
     @Override
     public double calcularAluguel(int dias) {
-        
-        if (eixos > 2){
-             return (eixos -2)(valorDiaria + (dias * (valorDiaria - (valorDiaria *(5/100)))));
-         }
-         return dias * valorDiaria;
+        double valor = dias * valorDiaria;  
+        if (eixos > 2) {
+            valor += valor * (eixos * 0.02);
+        }
+
+        return valor;
     }
 
     @Override
     public int calcularTaxaPeso() {
-        return 0;
+        return (int) (pesoCarga * 0.0005);
     }
     
 }
